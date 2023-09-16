@@ -1,0 +1,47 @@
+{
+    "subject_id": 10067,
+    "gender": "M",
+    "dob": "2101-06-10 00:00:00",
+    "DRGENTRIES": [
+        {
+            "drg_code": 486,
+            "description": "OTHER OPERATING ROOM PROCEDURES FOR MULTIPLE SIGNIFICANT TRAUMA"
+        }
+    ],
+    "PRESCRIPTIONS": [],
+    "CPTEVENTS": [],
+    "DIAGNOSES": [
+        {
+            "icd9_code": "86404",
+            "diagnosis": "Injury to liver without mention of open wound into cavity, laceration, major"
+        },
+        {
+            "icd9_code": "8504",
+            "diagnosis": "Concussion with prolonged loss of consciousness, without return to pre-existing conscious level"
+        },
+        {
+            "icd9_code": "9584",
+            "diagnosis": "Traumatic shock"
+        },
+        {
+            "icd9_code": "4275",
+            "diagnosis": "Cardiac arrest"
+        },
+        {
+            "icd9_code": "2851",
+            "diagnosis": "Acute posthemorrhagic anemia"
+        },
+        {
+            "icd9_code": "E8232",
+            "diagnosis": "Other motor vehicle nontraffic accident involving collision with stationary object injuring motorcyclist"
+        },
+        {
+            "icd9_code": "86389",
+            "diagnosis": "Injury to other gastrointestinal sites, without mention of open wound into cavity"
+        },
+        {
+            "icd9_code": "73689",
+            "diagnosis": "Other acquired deformity of other parts of limb"
+        }
+    ]
+}
