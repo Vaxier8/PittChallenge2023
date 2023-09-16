@@ -1,0 +1,39 @@
+{
+    "subject_id": 10011,
+    "gender": "F",
+    "dob": "2090-06-05 00:00:00",
+    "DRGENTRIES": [
+        {
+            "drg_code": 205,
+            "description": "DISORDERS OF LIVER EXCEPT MALIGNANCY, CIRRHOSIS, ALCOHOLIC HEPATITIS WITH COMPLICATIONS, COMORBIDITIES"
+        }
+    ],
+    "PRESCRIPTIONS": [],
+    "CPTEVENTS": [],
+    "DIAGNOSES": [
+        {
+            "icd9_code": "570",
+            "diagnosis": "Acute and subacute necrosis of liver"
+        },
+        {
+            "icd9_code": "07030",
+            "diagnosis": "Viral hepatitis B without mention of hepatic coma, acute or unspecified, without mention of hepatitis delta"
+        },
+        {
+            "icd9_code": "07054",
+            "diagnosis": "Chronic hepatitis C without mention of hepatic coma"
+        },
+        {
+            "icd9_code": "30401",
+            "diagnosis": "Opioid type dependence, continuous"
+        },
+        {
+            "icd9_code": "2875",
+            "diagnosis": "Thrombocytopenia, unspecified"
+        },
+        {
+            "icd9_code": "2760",
+            "diagnosis": "Hyperosmolality and/or hypernatremia"
+        }
+    ]
+}

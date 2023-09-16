@@ -1,0 +1,51 @@
+{
+    "subject_id": 10114,
+    "gender": "F",
+    "dob": "2099-03-17 00:00:00",
+    "DRGENTRIES": [
+        {
+            "drg_code": 518,
+            "description": "PERCUTANEOUS CARDIOVASCULAR PROCEDURES WITHOUT ACUTE MYOCARDIAL INFARCTION, WITHOUT CORONARY ARTERY STENT IMPLANT"
+        }
+    ],
+    "PRESCRIPTIONS": [],
+    "CPTEVENTS": [],
+    "DIAGNOSES": [
+        {
+            "icd9_code": "4280",
+            "diagnosis": "Congestive heart failure, unspecified"
+        },
+        {
+            "icd9_code": "4240",
+            "diagnosis": "Mitral valve disorders"
+        },
+        {
+            "icd9_code": "4111",
+            "diagnosis": "Intermediate coronary syndrome"
+        },
+        {
+            "icd9_code": "2859",
+            "diagnosis": "Anemia, unspecified"
+        },
+        {
+            "icd9_code": "4928",
+            "diagnosis": "Other emphysema"
+        },
+        {
+            "icd9_code": "29281",
+            "diagnosis": "Drug-induced delirium"
+        },
+        {
+            "icd9_code": "E9394",
+            "diagnosis": "Benzodiazepine-based tranquilizers causing adverse effects in therapeutic use"
+        },
+        {
+            "icd9_code": "25000",
+            "diagnosis": "Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled"
+        },
+        {
+            "icd9_code": "5939",
+            "diagnosis": "Unspecified disorder of kidney and ureter"
+        }
+    ]
+}
