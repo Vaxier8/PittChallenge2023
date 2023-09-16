@@ -11,7 +11,15 @@
         </div>
         <button type="submit" class="btn btn-primary">Upload & Process</button>
     </form>
-    
+    <form action="/get_patient_data" method="post">
+        <label for="key">Decryption Key:</label><br>
+        <input type="text" id="key" name="key"><br><br>
+
+        <label for="subject_id">Subject ID:</label><br>
+        <input type="text" id="subject_id" name="subject_id"><br><br>
+
+        <input type="submit" value="Get Data">
+    </form>
     <body>
         <div class="container">
             <h2 class="my-4 text-center">Welcome to MedBlockChain</h2>
