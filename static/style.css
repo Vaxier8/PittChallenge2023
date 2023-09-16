@@ -1,0 +1,8 @@
+/* Set the background color to black */
+body {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    background-color: rgb(34, 34, 34);
+    color: white; /* Optionally, set text color to white for better readability */
+}
