@@ -78,6 +78,25 @@ class Blockchain:
 
 app = Flask(__name__)
 
+from cryptography.fernet import Fernet
+
+def generate_key():
+    """Generates a key for encryption and returns it."""
+    return Fernet.generate_key()
+
+def encrypt_data(data, key):
+    """Encrypts the data using the provided key."""
+    f = Fernet(key)
+    encrypted_data = f.encrypt(json.dumps(data).encode())
+    return encrypted_data.decode()
+
+def decrypt_data(encrypted_data, key):
+    """Decrypts the data using the provided key."""
+    f = Fernet(key)
+    decrypted_data = f.decrypt(encrypted_data.encode())
+    return json.loads(decrypted_data.decode())
+
+
 blockchain = Blockchain()
 from werkzeug.utils import secure_filename
 import os
@@ -121,11 +140,19 @@ def process_file():
                     previous_proof = previous_block['proof']
                     proof = blockchain.proof_of_work(previous_proof)
                     previous_hash = blockchain.hash(previous_block)
+                   
+                    key = generate_key()  # Generate a unique key for this patient
+                    encrypted_data = encrypt_data(patient, key)  # Encrypt the patient data
 
-                    block = blockchain.create_blockchain(proof, previous_hash)
+                    # Save the key to a .txt file
+                    with open('keys.txt', 'a') as file:
+                        file.write(f"Patient {patient['subject_id']} Key: {key.decode()}\n")
 
-                    # Add patient details to the block
-                    block["patient_data"] = patient
+                    # Create a block with the encrypted data
+                    # Create a block with the encrypted data
+                    # Create a block with the encrypted data
+                    block = blockchain.create_blockchain(proof, previous_hash, patient_data=encrypted_data)
+
 
         os.remove(file_path)  # delete the file after processing
         
@@ -144,7 +171,7 @@ def mine_block():
     patient_data = request.json
 
     # Validate if required fields exist
-    required_fields = ["subject_id", "gender", "drug", "care_type", "diagnoses"]
+    required_fields = ["subject_id", "gender", "drug", "care_type", "diagnoses"] # date of birth, percription
     if not all(field in patient_data for field in required_fields):
         response = {
             'message': 'Invalid input. All patient fields are required.'
@@ -157,11 +184,11 @@ def mine_block():
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.hash(previous_block)
 
-    block = blockchain.create_blockchain(proof, previous_hash, patient_data=patient)
+   # block = blockchain.create_blockchain(proof, previous_hash, patient_data=patient)
 
     
     # Add patient details to the block
-    block["patient_data"] = patient_data
+   # block["patient_data"] = patient_data
 
     response = {
         'message': 'Block mined with patient details!',
@@ -175,6 +202,24 @@ def get_chain():
     response = {'chain': blockchain.chain,
                 'length': len(blockchain.chain)}
     return jsonify(response), 200
+@app.route('/get_patient_data', methods=['POST'])
+def get_patient_data():
+    key = request.form.get('key').encode()  # Get the decryption key from the user
+    subject_id = request.form.get('subject_id')  # Patient's unique identifier
+    
+    # Iterate through the chain to find the patient's data
+    for block in blockchain.chain:
+        try:
+            decrypted_data = decrypt_data(block['patient_data'], key)
+            if decrypted_data['subject_id'] == subject_id:
+                return jsonify(decrypted_data), 200
+        except:
+            # Decryption failed for this block, move to the next block
+            continue
+
+    return jsonify({"message": "Data not found or incorrect key"}), 404
+
+
 
 app.run(host='0.0.0.0', port=5000)
 
