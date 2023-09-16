@@ -1,0 +1,16 @@
+[
+    {
+        "subject_id": "12345",
+        "gender": "male",
+        "drug": "medication_A",
+        "care_type": "emergency",
+        "diagnoses": "condition_X"
+    },
+    {
+        "subject_id": "67890",
+        "gender": "female",
+        "drug": "medication_B",
+        "care_type": "routine",
+        "diagnoses": "condition_Y"
+    }
+]
