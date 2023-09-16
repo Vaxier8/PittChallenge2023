@@ -1,0 +1,309 @@
+{
+    "subject_id": 42458,
+    "gender": "M",
+    "dob": "1846-07-21 00:00:00",
+    "DRGENTRIES": [
+        {
+            "drg_code": 2072,
+            "description": "Other Circulatory System Diagnoses"
+        },
+        {
+            "drg_code": 2072,
+            "description": "Other Circulatory System Diagnoses"
+        },
+        {
+            "drg_code": 314,
+            "description": "OTHER CIRCULATORY SYSTEM DIAGNOSES W MCC"
+        }
+    ],
+    "PRESCRIPTIONS": [
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Pneumococcal Vac Polyvalent",
+            "drug_name_poe": "Pneumococcal Vac Polyvalent",
+            "drug_name_generic": "PNEUMOcoccal Vac Polyvalent",
+            "formulary_drug_cd": "PNEU25I",
+            "gsn": 48548.0,
+            "ndc": 6494300.0,
+            "prod_strength": "25mcg/0.5mL Vial",
+            "dose_val_rx": "0.5",
+            "dose_unit_rx": "mL",
+            "form_val_disp": "1",
+            "form_unit_disp": "VIAL",
+            "route": "IM"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Bisacodyl",
+            "drug_name_poe": "Bisacodyl",
+            "drug_name_generic": "Bisacodyl",
+            "formulary_drug_cd": "BISA5",
+            "gsn": 2947.0,
+            "ndc": 536338101.0,
+            "prod_strength": "5 mg Tab",
+            "dose_val_rx": "10",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "2",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Bisacodyl",
+            "drug_name_poe": "Bisacodyl",
+            "drug_name_generic": "Bisacodyl (Rectal)",
+            "formulary_drug_cd": "BISA10R",
+            "gsn": 2944.0,
+            "ndc": 574705050.0,
+            "prod_strength": "10mg Suppository",
+            "dose_val_rx": "10",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "SUPP",
+            "route": "PR"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Senna",
+            "drug_name_poe": "Senna",
+            "drug_name_generic": "Senna",
+            "formulary_drug_cd": "SENN187",
+            "gsn": 19964.0,
+            "ndc": 904516561.0,
+            "prod_strength": "1 Tablet",
+            "dose_val_rx": "1",
+            "dose_unit_rx": "TAB",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-21 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Docusate Sodium (Liquid)",
+            "drug_name_poe": "Docusate Sodium (Liquid)",
+            "drug_name_generic": "Docusate Sodium (Liquid)",
+            "formulary_drug_cd": "DOCU100L",
+            "gsn": 3017.0,
+            "ndc": 121054410.0,
+            "prod_strength": "100mg UD Cup",
+            "dose_val_rx": "100",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "UDCUP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Heparin",
+            "drug_name_poe": "Heparin",
+            "drug_name_generic": "Heparin Sodium",
+            "formulary_drug_cd": "HEPA5I",
+            "gsn": 6549.0,
+            "ndc": 63323026201.0,
+            "prod_strength": "5000 Units / mL- 1mL Vial",
+            "dose_val_rx": "5000",
+            "dose_unit_rx": "UNIT",
+            "form_val_disp": "1",
+            "form_unit_disp": "mL",
+            "route": "SC"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Simvastatin",
+            "drug_name_poe": "Simvastatin",
+            "drug_name_generic": "Simvastatin",
+            "formulary_drug_cd": "SIMV10",
+            "gsn": 16577.0,
+            "ndc": 51079045420.0,
+            "prod_strength": "10mg Tablet",
+            "dose_val_rx": "20",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "2",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Aspirin",
+            "drug_name_poe": "Aspirin",
+            "drug_name_generic": "Aspirin",
+            "formulary_drug_cd": "ASA81",
+            "gsn": 4380.0,
+            "ndc": 904404073.0,
+            "prod_strength": "81mg Tab",
+            "dose_val_rx": "162",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "2",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Donepezil",
+            "drug_name_poe": "Donepezil",
+            "drug_name_generic": "Donepezil",
+            "formulary_drug_cd": "DONE5",
+            "gsn": 29335.0,
+            "ndc": 62856024541.0,
+            "prod_strength": "5mg Tablet",
+            "dose_val_rx": "10",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "2",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Gabapentin",
+            "drug_name_poe": "Gabapentin",
+            "drug_name_generic": "Gabapentin",
+            "formulary_drug_cd": "GABA100",
+            "gsn": 21413.0,
+            "ndc": 904563161.0,
+            "prod_strength": "100mg Capsule",
+            "dose_val_rx": "100",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "CAP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Namenda",
+            "drug_name_poe": "Namenda",
+            "drug_name_generic": "*NF* Memantine",
+            "formulary_drug_cd": "MEMA5",
+            "gsn": 53324.0,
+            "ndc": 456320563.0,
+            "prod_strength": "5mg Tablet",
+            "dose_val_rx": "5",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "ORAL"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Tolterodine",
+            "drug_name_poe": "Tolterodine",
+            "drug_name_generic": "Tolterodine",
+            "formulary_drug_cd": "TOLT1",
+            "gsn": 39138.0,
+            "ndc": 9454101.0,
+            "prod_strength": "1mg Tablet",
+            "dose_val_rx": "1",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Metoprolol Succinate XL",
+            "drug_name_poe": "Metoprolol Succinate XL",
+            "drug_name_generic": "Metoprolol Succinate XL",
+            "formulary_drug_cd": "TOPR25",
+            "gsn": 47586.0,
+            "ndc": 58177029311.0,
+            "prod_strength": "25mg XL Tab",
+            "dose_val_rx": "12.5",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "0.5",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Tamsulosin",
+            "drug_name_poe": "Tamsulosin",
+            "drug_name_generic": "Tamsulosin",
+            "formulary_drug_cd": "TAMS.4",
+            "gsn": 27546.0,
+            "ndc": 597005801.0,
+            "prod_strength": "0.4mg Capsule",
+            "dose_val_rx": "0.4",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "CAP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2146-07-21 00:00:00",
+            "enddate": "2146-07-22 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Docusate Sodium",
+            "drug_name_poe": "Docusate Sodium",
+            "drug_name_generic": "Docusate Sodium",
+            "formulary_drug_cd": "DOCU100",
+            "gsn": 3009.0,
+            "ndc": 904224461.0,
+            "prod_strength": "100mg Capsule",
+            "dose_val_rx": "100",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "CAP",
+            "route": "PO"
+        }
+    ],
+    "CPTEVENTS": [
+        {
+            "ticket_id_seq": 6.0,
+            "sectionheader": "Evaluation and management",
+            "subsectionheader": "Hospital inpatient services"
+        }
+    ],
+    "DIAGNOSES": [
+        {
+            "icd9_code": "4588",
+            "diagnosis": "Other specified hypotension"
+        },
+        {
+            "icd9_code": "5849",
+            "diagnosis": "Acute kidney failure, unspecified"
+        },
+        {
+            "icd9_code": "4270",
+            "diagnosis": "Paroxysmal supraventricular tachycardia"
+        },
+        {
+            "icd9_code": "27652",
+            "diagnosis": "Hypovolemia"
+        },
+        {
+            "icd9_code": "2948",
+            "diagnosis": "Other persistent mental disorders due to conditions classified elsewhere"
+        },
+        {
+            "icd9_code": "72400",
+            "diagnosis": "Spinal stenosis, unspecified region"
+        }
+    ]
+}

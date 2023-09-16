@@ -1,0 +1,402 @@
+{
+    "subject_id": 44222,
+    "gender": "M",
+    "dob": "2107-06-27 00:00:00",
+    "DRGENTRIES": [
+        {
+            "drg_code": 2013,
+            "description": "Cardiac Arrhythmia & Conduction Disorders"
+        },
+        {
+            "drg_code": 2013,
+            "description": "Cardiac Arrhythmia & Conduction Disorders"
+        },
+        {
+            "drg_code": 308,
+            "description": "CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W MCC"
+        }
+    ],
+    "PRESCRIPTIONS": [
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Bisacodyl",
+            "drug_name_poe": "Bisacodyl",
+            "drug_name_generic": "Bisacodyl",
+            "formulary_drug_cd": "BISA5",
+            "gsn": 2947.0,
+            "ndc": 536338101.0,
+            "prod_strength": "5 mg Tab",
+            "dose_val_rx": "10",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "2",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Bisacodyl",
+            "drug_name_poe": "Bisacodyl",
+            "drug_name_generic": "Bisacodyl (Rectal)",
+            "formulary_drug_cd": "BISA10R",
+            "gsn": 2944.0,
+            "ndc": 574705050.0,
+            "prod_strength": "10mg Suppository",
+            "dose_val_rx": "10",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "SUPP",
+            "route": "PR"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Senna",
+            "drug_name_poe": "Senna",
+            "drug_name_generic": "Senna",
+            "formulary_drug_cd": "SENN187",
+            "gsn": 19964.0,
+            "ndc": 904516561.0,
+            "prod_strength": "1 Tablet",
+            "dose_val_rx": "1",
+            "dose_unit_rx": "TAB",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-19 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Docusate Sodium (Liquid)",
+            "drug_name_poe": "Docusate Sodium (Liquid)",
+            "drug_name_generic": "Docusate Sodium (Liquid)",
+            "formulary_drug_cd": "DOCU100L",
+            "gsn": 3017.0,
+            "ndc": 121054410.0,
+            "prod_strength": "100mg UD Cup",
+            "dose_val_rx": "100",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "UDCUP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Heparin",
+            "drug_name_poe": "Heparin",
+            "drug_name_generic": "Heparin Sodium",
+            "formulary_drug_cd": "HEPA5I",
+            "gsn": 6549.0,
+            "ndc": 63323026201.0,
+            "prod_strength": "5000 Units / mL- 1mL Vial",
+            "dose_val_rx": "5000",
+            "dose_unit_rx": "UNIT",
+            "form_val_disp": "1",
+            "form_unit_disp": "mL",
+            "route": "SC"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Docusate Sodium",
+            "drug_name_poe": "Docusate Sodium",
+            "drug_name_generic": "Docusate Sodium",
+            "formulary_drug_cd": "DOCU100",
+            "gsn": 3009.0,
+            "ndc": 904224461.0,
+            "prod_strength": "100mg Capsule",
+            "dose_val_rx": "100",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "CAP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Docusate Sodium",
+            "drug_name_poe": "Docusate Sodium",
+            "drug_name_generic": "Docusate Sodium (Liquid)",
+            "formulary_drug_cd": "DOCU100L",
+            "gsn": 3017.0,
+            "ndc": 121054410.0,
+            "prod_strength": "100mg UD Cup",
+            "dose_val_rx": "100",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "UDCUP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Calcium Chloride",
+            "drug_name_poe": "Calcium Chloride",
+            "drug_name_generic": "Calcium Chloride",
+            "formulary_drug_cd": "CALC100SI",
+            "gsn": 1349.0,
+            "ndc": 409492834.0,
+            "prod_strength": "1g/10mL Syringe",
+            "dose_val_rx": "1",
+            "dose_unit_rx": "gm",
+            "form_val_disp": "1",
+            "form_unit_disp": "SYR",
+            "route": "IV"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Aspirin",
+            "drug_name_poe": "Aspirin",
+            "drug_name_generic": "Aspirin",
+            "formulary_drug_cd": "ASA81",
+            "gsn": 4380.0,
+            "ndc": 904404073.0,
+            "prod_strength": "81mg Tab",
+            "dose_val_rx": "81",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Atorvastatin",
+            "drug_name_poe": "Atorvastatin",
+            "drug_name_generic": "Atorvastatin",
+            "formulary_drug_cd": "ATOR10",
+            "gsn": 29967.0,
+            "ndc": 71015540.0,
+            "prod_strength": "10mg Tablet",
+            "dose_val_rx": "10",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Gabapentin",
+            "drug_name_poe": "Gabapentin",
+            "drug_name_generic": "Gabapentin",
+            "formulary_drug_cd": "GABA300",
+            "gsn": 21414.0,
+            "ndc": 172438210.0,
+            "prod_strength": "300mg Capsule",
+            "dose_val_rx": "300",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "CAP",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-19 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Valsartan",
+            "drug_name_poe": "Valsartan",
+            "drug_name_generic": "Valsartan",
+            "formulary_drug_cd": "VALS160",
+            "gsn": 48400.0,
+            "ndc": 78035934.0,
+            "prod_strength": "160mg Tablet",
+            "dose_val_rx": "160",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Carbidopa-Levodopa (10-100)",
+            "drug_name_poe": "Carbidopa-Levodopa (10-100)",
+            "drug_name_generic": "Carbidopa-Levodopa (10-100)",
+            "formulary_drug_cd": "SINE10100",
+            "gsn": 2537.0,
+            "ndc": 51079075520.0,
+            "prod_strength": "10-100 mg Tab",
+            "dose_val_rx": "1",
+            "dose_unit_rx": "TAB",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Multivitamins",
+            "drug_name_poe": "Multivitamins",
+            "drug_name_generic": "Multivitamins",
+            "formulary_drug_cd": "MVI",
+            "gsn": 2532.0,
+            "ndc": 904053061.0,
+            "prod_strength": "1 Tablet",
+            "dose_val_rx": "1",
+            "dose_unit_rx": "TAB",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Insulin",
+            "drug_name_poe": "Insulin",
+            "drug_name_generic": "Insulin - Sliding Scale",
+            "formulary_drug_cd": "INSULIN",
+            "gsn": 27413.0,
+            "ndc": 0.0,
+            "prod_strength": "Dummy Package for Sliding Scale",
+            "dose_val_rx": "0",
+            "dose_unit_rx": "UNIT",
+            "form_val_disp": "0",
+            "form_unit_disp": "VIAL",
+            "route": "SC"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Insulin",
+            "drug_name_poe": "Insulin",
+            "drug_name_generic": "Insulin Human NPH",
+            "formulary_drug_cd": "INNHI",
+            "gsn": 1740.0,
+            "ndc": 2831501.0,
+            "prod_strength": "10mL Vial",
+            "dose_val_rx": "60",
+            "dose_unit_rx": "UNIT",
+            "form_val_disp": "0.6",
+            "form_unit_disp": "mL",
+            "route": "SC"
+        },
+        {
+            "startdate": "2180-07-20 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Hydrochlorothiazide",
+            "drug_name_poe": "Hydrochlorothiazide",
+            "drug_name_generic": "Hydrochlorothiazide",
+            "formulary_drug_cd": "HCTZ25",
+            "gsn": 29832.0,
+            "ndc": 603385521.0,
+            "prod_strength": "25mg Tablet",
+            "dose_val_rx": "12.5",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "0.5",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-20 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "MAIN",
+            "drug": "Valsartan",
+            "drug_name_poe": "Valsartan",
+            "drug_name_generic": "Valsartan",
+            "formulary_drug_cd": "VALS160",
+            "gsn": 48400.0,
+            "ndc": 78035934.0,
+            "prod_strength": "160mg Tablet",
+            "dose_val_rx": "160",
+            "dose_unit_rx": "mg",
+            "form_val_disp": "1",
+            "form_unit_disp": "TAB",
+            "route": "PO"
+        },
+        {
+            "startdate": "2180-07-19 00:00:00",
+            "enddate": "2180-07-20 00:00:00",
+            "drug_type": "BASE",
+            "drug": "0.9% Sodium Chloride",
+            "drug_name_poe": NaN,
+            "drug_name_generic": NaN,
+            "formulary_drug_cd": "NS1000",
+            "gsn": 1210.0,
+            "ndc": 338004904.0,
+            "prod_strength": "1000mL Bag",
+            "dose_val_rx": "1000",
+            "dose_unit_rx": "mL",
+            "form_val_disp": "1",
+            "form_unit_disp": "BAG",
+            "route": "IV"
+        }
+    ],
+    "CPTEVENTS": [
+        {
+            "ticket_id_seq": 2.0,
+            "sectionheader": "Evaluation and management",
+            "subsectionheader": "Hospital inpatient services"
+        },
+        {
+            "ticket_id_seq": 3.0,
+            "sectionheader": "Evaluation and management",
+            "subsectionheader": "Hospital inpatient services"
+        }
+    ],
+    "DIAGNOSES": [
+        {
+            "icd9_code": "42781",
+            "diagnosis": "Sinoatrial node dysfunction"
+        },
+        {
+            "icd9_code": "5849",
+            "diagnosis": "Acute kidney failure, unspecified"
+        },
+        {
+            "icd9_code": "E9429",
+            "diagnosis": "Other and unspecified agents primarily affecting the cardiovascular system causing adverse effects in therapeutic use"
+        },
+        {
+            "icd9_code": "41401",
+            "diagnosis": "Coronary atherosclerosis of native coronary artery"
+        },
+        {
+            "icd9_code": "40390",
+            "diagnosis": "Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage I through stage IV, or unspecified"
+        },
+        {
+            "icd9_code": "5853",
+            "diagnosis": "Chronic kidney disease, Stage III (moderate)"
+        },
+        {
+            "icd9_code": "25060",
+            "diagnosis": "Diabetes with neurological manifestations, type II or unspecified type, not stated as uncontrolled"
+        },
+        {
+            "icd9_code": "3572",
+            "diagnosis": "Polyneuropathy in diabetes"
+        },
+        {
+            "icd9_code": "2724",
+            "diagnosis": "Other and unspecified hyperlipidemia"
+        },
+        {
+            "icd9_code": "3320",
+            "diagnosis": "Paralysis agitans"
+        },
+        {
+            "icd9_code": "72400",
+            "diagnosis": "Spinal stenosis, unspecified region"
+        }
+    ]
+}
