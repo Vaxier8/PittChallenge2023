@@ -3,27 +3,71 @@
     <head>
         <title>MedBlockChain</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="file">Upload JSON file:</label>
-            <input type="file" class="form-control" id="file" accept=".json" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Upload & Process</button>
-    </form>
-    <form action="/get_patient_data" method="post">
-        <label for="key">Decryption Key:</label><br>
-        <input type="text" id="key" name="key"><br><br>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <style>
+            /* Pitt Challenge image */
+            .lp-nav__image {
+                margin-right: 30px;
+                width: 50px;
+                height: 50px;
+            }
+            .text__eyebrow { 
+            font-size: 24px;
+            }
+        .text__team-name{
+            font-size: 20px;
+            font-style: initial;
+            color: rgb(100, 100, 231);
+        }
+        .upload_file_container{
+            margin-top: 50px;
+        }
+        /* h2 {
+            margin-bottom: 3000px; 
+        } */
+        </style>
+    </head>   
 
-        <label for="subject_id">Subject ID:</label><br>
-        <input type="text" id="subject_id" name="subject_id"><br><br>
-
-        <input type="submit" value="Get Data">
-    </form>
     <body>
-        <div class="container">
+    <div class="page">
+        <div class="main">
+            <section class="section">
+            <section class="section">    
+                <div class="contain">
+                    <div class="base-grid">
+                        <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b46-ee92d80d" class="text__white">
+                            <div class="vertical__40">
+                                <!-- <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b48-ee92d80d" class="vertical__60"> -->
+                                <img src="https://pittchallenge.com/z_images/pitt-challenge.svg" loading="lazy" alt="" class="lp-nav__image">
+                                <!-- <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b4a-ee92d80d" class="text__blue-300"> -->
+                                    <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b4b-ee92d80d" class="text__eyebrow">The Pitt Challenge 2023 </div>
+                                    <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b4b-ee92d80d" class="text__team-name">Team: Data Docs </div>
+
+                                </div>
+                            </div>
+        
+        <div class="container upload_file_container">
             <h2 class="my-4 text-center">Welcome to MedBlockChain</h2>
-            
+            <br>
+            <br>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Upload JSON file:</label>
+                    <input type="file" class="form-control" id="file" accept=".json" required>
+                </div>
+                <button type="submit" class="btn btn-primary mx-auto d-block">Upload & Process</button>
+            </form>
+            <br>
+            <br>
+            <form action="/get_patient_data" method="post">
+                <label for="key">Decryption Key:</label><br>
+                <input type="text" id="key" name="key"><br><br>
+        
+                <label for="subject_id">Subject ID:</label><br>
+                <input type="text" id="subject_id" name="subject_id"><br><br>
+        
+                <input type="submit" value="Get Data">
+            </form>
             <div class="text-center my-4">
                 <button id="mineBlock" class="btn btn-primary">Mine a Block</button>
                 <button id="viewChain" class="btn btn-secondary">View Blockchain</button>
