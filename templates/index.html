@@ -22,9 +22,10 @@
         .upload_file_container{
             margin-top: 50px;
         }
-        /* h2 {
-            margin-bottom: 3000px; 
-        } */
+        
+        label {
+        font-size: 16px; 
+        }
         </style>
     </head>   
 
@@ -52,7 +53,7 @@
             <br>
             <form id="uploadForm" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="file">Upload JSON file:</label>
+                    <label for="file"">Upload JSON file:</label>
                     <input type="file" class="form-control" id="file" accept=".json" required>
                 </div>
                 <button type="submit" class="btn btn-primary mx-auto d-block">Upload & Process</button>
@@ -68,10 +69,10 @@
         
                 <input type="submit" value="Get Data">
             </form>
-            <div class="text-center my-4">
-                <button id="mineBlock" class="btn btn-primary">Mine a Block</button>
-                <button id="viewChain" class="btn btn-secondary">View Blockchain</button>
-            </div>
+            <!-- <div class="text-center my-4">
+                <button id="mineBlock" class="btn btn-custom-primary">Mine a Block</button>
+                <button id="viewChain" class="btn btn-custom-secondary">View Blockchain</button>
+            </div> -->
     
             <div id="response"></div>
         </div>
@@ -144,5 +145,43 @@ $("#viewChain").click(function() {
 
         });
     </script>
+     <div class="components">
+        <section data-component="scrolling logos - black" class="section">
+            <div class="contain">
+                <div class="logos"> <!-- Start logos container -->
+                    <div class="logos__wrap"> <!-- Start logos wrap -->
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/pitt-pharm-logo.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/Gilead-Logo-Snip.jpg" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/mlh-logo-color.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/UPMC_Enterprises.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/UPMC_3_HealthPlan_H_RGB.jpg" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/ctsi_color.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/github-logo.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/pyrls-main-lg.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://www.wolfram.com/common/framework/img/spikey.en.png" alt="" class="logos__image">
+                            <img src="https://www.wolfram.com/common/framework/img/wolfram.en.png" alt="" class="logos__image">
+                        </div>
+                    </div> <!-- End logos wrap -->
+                </div> <!-- End logos container -->
+            </div>
+        </section>
+    </div>
 </body>
 </html>
