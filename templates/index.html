@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MedBlockChain</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <div class="container">
+            <h2 class="my-4 text-center">Welcome to MedBlockChain</h2>
+            
+            <div class="text-center my-4">
+                <button id="mineBlock" class="btn btn-primary">Mine a Block</button>
+                <button id="viewChain" class="btn btn-secondary">View Blockchain</button>
+            </div>
+    
+            <div id="response"></div>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#mineBlock").click(function() {
+    $.get("/mine_block", function(data, status) {
+        let block = data;
+        let html = `
+            <div class="card my-3">
+                <div class="card-header bg-success text-white">
+                    New Block Mined! Block #${block.index}
+                </div>
+                <div class="card-body">
+                    <p><strong>Timestamp:</strong> ${block.timestamp}</p>
+                    <p><strong>Proof:</strong> ${block.proof}</p>
+                    <p><strong>Previous Hash:</strong> ${block.previous_hash}</p>
+                </div>
+            </div>
+        `;
+        
+        $("#response").html(html);
+    });
+});
+
+
+$("#viewChain").click(function() {
+    $.get("/get_chain", function(data, status) {
+        let blocks = data.chain;
+        let html = "";
+        
+        for(let block of blocks) {
+            html += `
+                <div class="card my-3">
+                    <div class="card-header">
+                        Block #${block.index}
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Timestamp:</strong> ${block.timestamp}</p>
+                        <p><strong>Proof:</strong> ${block.proof}</p>
+                        <p><strong>Previous Hash:</strong> ${block.previous_hash}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        $("#response").html(html);
+    });
+});
+
+        });
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import datetime
 import json
 import hashlib
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 class Blockchain:
     def __init__(self):
@@ -13,7 +13,8 @@ class Blockchain:
             'index': len(self.chain) + 1,
             'timestamp': str(datetime.datetime.now()),
             'proof': proof,
-            'previous_hash': previous_hash
+            'previous_hash': previous_hash,
+           # 'drug_code': drgcode
         }
 
 
@@ -79,6 +80,10 @@ app = Flask(__name__)
 
 blockchain = Blockchain()
 
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/mine_block', methods=['GET'])
 def mine_block():
