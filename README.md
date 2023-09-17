@@ -22,11 +22,10 @@ This repository contains our solution for the Pitt Challenge 2023, focusing on t
     Encrypt patient data using the Fernet symmetric encryption method from the cryptography library.
     Store encrypted data in the blockchain, ensuring data privacy.
 
-### AI and Trained Model:
+### Trained Model And The Idea of AI:
 
-    Utilize a trained machine learning model to validate and categorize extracted patient data.
     Automatically flag suspicious or inconsistent data entries based on the model's predictions.
-    Enhance data accuracy and reliability using AI-driven validation.
+    AI could be utilized through API's and access medical information in a secure and opt-in manner.
 
 ### Flask Web Application:
 
