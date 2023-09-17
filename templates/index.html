@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MedBlockChain</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <style>
+            /* Pitt Challenge image */
+            .lp-nav__image {
+                margin-right: 30px;
+                width: 50px;
+                height: 50px;
+            }
+            .text__eyebrow { 
+            font-size: 24px;
+            }
+        .text__team-name{
+            font-size: 20px;
+            font-style: initial;
+            color: rgb(100, 100, 231);
+        }
+        .upload_file_container{
+            margin-top: 50px;
+        }
+        
+        label {
+        font-size: 16px; 
+        }
+        </style>
+    </head>   
+
+    <body>
+    <div class="page">
+        <div class="main">
+            <section class="section">
+            <section class="section">    
+                <div class="contain">
+                    <div class="base-grid">
+                        <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b46-ee92d80d" class="text__white">
+                            <div class="vertical__40">
+                                <!-- <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b48-ee92d80d" class="vertical__60"> -->
+                                <img src="https://pittchallenge.com/z_images/pitt-challenge.svg" loading="lazy" alt="" class="lp-nav__image">
+                                <!-- <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b4a-ee92d80d" class="text__blue-300"> -->
+                                    <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b4b-ee92d80d" class="text__eyebrow">The Pitt Challenge 2023 </div>
+                                    <div id="w-node-_667821ff-cd52-dd82-422f-a3f4a1475b4b-ee92d80d" class="text__team-name">Team: Data Docs </div>
+
+                                </div>
+                            </div>
+        
+        <div class="container upload_file_container">
+            <h2 class="my-4 text-center">Welcome to MedBlockChain</h2>
+            <br>
+            <br>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="pdfFile">Upload PDF files:</label>
+                    <input type="file" class="form-control" id="pdfFile" accept=".pdf" multiple required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload & Process</button>
+            </form>
+            <br>
+            <br>
+            <form action="/get_patient_data" method="post">
+                <label for="key">Decryption Key:</label><br>
+                <input type="text" id="key" name="key"><br><br>
+        
+                <label for="subject_id">Subject ID:</label><br>
+                <input type="text" id="subject_id" name="subject_id"><br><br>
+        
+                <input type="submit" value="Get Data">
+            </form>
+            <!-- <div class="text-center my-4">
+                <button id="mineBlock" class="btn btn-custom-primary">Mine a Block</button>
+                <button id="viewChain" class="btn btn-custom-secondary">View Blockchain</button>
+            </div> -->
+    
+            <div id="response"></div>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $("#uploadForm").submit(function(event) {
+    event.preventDefault();
+
+    var formData = new FormData();
+    var files = $('#pdfFile')[0].files;
+    for (var i = 0; i < files.length; i++) {
+        formData.append('file', files[i]);
+    }
+
+    $.ajax({
+        url: '/process_file',
+        type: 'POST',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            $("#response").html(JSON.stringify(response));
+        }
+    });
+});
+
+
+        $(document).ready(function() {
+            $("#mineBlock").click(function() {
+    $.get("/mine_block", function(data, status) {
+        let block = data;
+        let html = `
+            <div class="card my-3">
+                <div class="card-header bg-success text-white">
+                    New Block Mined! Block #${block.index}
+                </div>
+                <div class="card-body">
+                    <p><strong>Timestamp:</strong> ${block.timestamp}</p>
+                    <p><strong>Proof:</strong> ${block.proof}</p>
+                    <p><strong>Previous Hash:</strong> ${block.previous_hash}</p>
+                </div>
+            </div>
+        `;
+        
+        $("#response").html(html);
+    });
+});
+
+
+$("#viewChain").click(function() {
+    $.get("/get_chain", function(data, status) {
+        let blocks = data.chain;
+        let html = "";
+        
+        for(let block of blocks) {
+            html += `
+                <div class="card my-3">
+                    <div class="card-header">
+                        Block #${block.index}
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Timestamp:</strong> ${block.timestamp}</p>
+                        <p><strong>Proof:</strong> ${block.proof}</p>
+                        <p><strong>Previous Hash:</strong> ${block.previous_hash}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        $("#response").html(html);
+    });
+});
+        });
+    </script>
+     <div class="components">
+        <section data-component="scrolling logos - black" class="section">
+            <div class="contain">
+                <div class="logos"> <!-- Start logos container -->
+                    <div class="logos__wrap"> <!-- Start logos wrap -->
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/pitt-pharm-logo.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/Gilead-Logo-Snip.jpg" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/mlh-logo-color.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/UPMC_Enterprises.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/UPMC_3_HealthPlan_H_RGB.jpg" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/ctsi_color.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/github-logo.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://pittchallenge.com/z_images/logos/pyrls-main-lg.png" alt="" class="logos__image">
+                        </div>
+                        <div class="logos__logo">
+                            <img src="https://www.wolfram.com/common/framework/img/spikey.en.png" alt="" class="logos__image">
+                            <img src="https://www.wolfram.com/common/framework/img/wolfram.en.png" alt="" class="logos__image">
+                        </div>
+                    </div> <!-- End logos wrap -->
+                </div> <!-- End logos container -->
+            </div>
+        </section>
+    </div>
+</body>
+</html>
