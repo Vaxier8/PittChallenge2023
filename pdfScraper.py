@@ -3,6 +3,9 @@ import json
 import re
 import fitz
 from collections import defaultdict
+import tkinter as tk
+from tkinter import filedialog
+
 
 
 def extract_data_from_pdf(file_path):
@@ -52,26 +55,33 @@ def save_to_json(data, output_file):
         json.dump(data, f, indent=4)
 
 
-def main(pdf_dir, output_file):
+def main(pdf_files, output_file):
     all_data = defaultdict(
         lambda: {"subject_id": None, "PRESCRIPTION": [], "DIAGNOSES": []})
 
-    for root, dirs, files in os.walk(pdf_dir):
-        for file in files:
-            if file.endswith(".pdf"):
-                file_path = os.path.join(root, file)
-                data = extract_data_from_pdf(file_path)
+    for file_path in pdf_files:
+        if file_path.endswith(".pdf"):
+            data = extract_data_from_pdf(file_path)
 
-                if data["subject_id"] is not None:
-                    subject_id = data["subject_id"]
-                    all_data[subject_id]["subject_id"] = subject_id
-                    all_data[subject_id]["PRESCRIPTION"].extend(
-                        data["PRESCRIPTION"])
-                    all_data[subject_id]["DIAGNOSES"].extend(data["DIAGNOSES"])
+            if data["subject_id"] is not None:
+                subject_id = data["subject_id"]
+                all_data[subject_id]["subject_id"] = subject_id
+                all_data[subject_id]["PRESCRIPTION"].extend(
+                    data["PRESCRIPTION"])
+                all_data[subject_id]["DIAGNOSES"].extend(data["DIAGNOSES"])
 
     all_data = dict(all_data)
     save_to_json(list(all_data.values()), output_file)
 
 
-# Usage
-main('pdfDir', 'output.json')
+def select_pdf_files():
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    file_paths = filedialog.askopenfilenames(title="Select PDF Files", filetypes=[("PDF files", "*.pdf")])
+    return file_paths
+
+
+if __name__ == '__main__':
+    selected_pdfs = select_pdf_files()
+    if selected_pdfs:
+        main(selected_pdfs, 'output.json')

@@ -1,7 +1,78 @@
-import datetime
+import os
 import json
+import re
+import fitz
+import datetime
 import hashlib
 from flask import Flask, jsonify, request, render_template
+from cryptography.fernet import Fernet
+from werkzeug.utils import secure_filename
+import tkinter as tk
+from tkinter import filedialog
+
+# --------------------------
+# PDF Processing Functions
+# --------------------------
+def extract_data_from_pdf(file_path):
+    doc = fitz.open(file_path)
+    text = ""
+    for page in doc:
+        text += page.get_text()
+    text = text.replace('\ufb02', 'fl')
+    data = {
+        "subject_id": None,
+        "PRESCRIPTION": [],
+        "DIAGNOSES": []
+    }
+    subject_id_synonyms = ["Subject Id", "Patient Id", "Subject Identifier"]
+    drug_name_synonyms = ["Drug Name", "Medication Name", "Prescription Name"]
+    diagnosis_synonyms = ["Diagnosis", "Diagnosis Name", "Disease Name"]
+    for synonym in subject_id_synonyms:
+        subject_id_match = re.search(fr'{synonym}:\s*(\d+)', text)
+        if subject_id_match:
+            data["subject_id"] = int(subject_id_match.group(1))
+            break
+    for synonym in drug_name_synonyms:
+        drug_name_matches = re.findall(fr'{synonym}:\s*([^:\n]+)', text)
+        for match in drug_name_matches:
+            data["PRESCRIPTION"].append({"drug_name": match.strip()})
+    for synonym in diagnosis_synonyms:
+        diagnosis_matches = re.findall(fr'{synonym}:\s*([^:\n]+)', text)
+        for match in diagnosis_matches:
+            diagnosis_data = {
+                "diagnosis": match.strip(),
+                "icd9_code": None
+            }
+            data["DIAGNOSES"].append(diagnosis_data)
+    return data
+
+def save_to_json(data, output_file):
+    with open(output_file, 'w') as f:
+        json.dump(data, f, indent=4)
+
+def main(selected_pdfs, output_file):
+    all_data = []
+    for file_path in selected_pdfs:
+        data = extract_data_from_pdf(file_path)
+        all_data.append(data)
+    save_to_json(all_data, output_file)
+
+def extract_data_from_pdfs():
+    selected_pdfs = select_pdf_files()
+    if selected_pdfs:
+        main(selected_pdfs, 'output.json')
+
+def select_pdf_files():
+    root = tk.Tk()
+    root.withdraw()
+    file_paths = filedialog.askopenfilenames(title="Select PDF Files", filetypes=[("PDF files", "*.pdf")])
+    return file_paths
+
+
+# --------------------------
+# Blockchain Class & Methods
+# --------------------------
+
 class Blockchain:
     def __init__(self):
         self.chain = []
@@ -75,10 +146,11 @@ class Blockchain:
             previous_block = block
             block_index += 1
         return True
+blockchain = Blockchain()
 
-app = Flask(__name__)
-
-from cryptography.fernet import Fernet
+# --------------------------
+# Encryption/Decryption Functions
+# --------------------------
 
 def generate_key():
     """Generates a key for encryption and returns it."""
@@ -96,70 +168,66 @@ def decrypt_data(encrypted_data, key):
     decrypted_data = f.decrypt(encrypted_data.encode())
     return json.loads(decrypted_data.decode())
 
+# --------------------------
+# Flask App Configuration
+# --------------------------
 
-blockchain = Blockchain()
-from werkzeug.utils import secure_filename
-import os
+app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'json'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Check if the file has an allowed extension
+# --------------------------
+# Helper Functions for Flask
+# --------------------------
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+# --------------------------
+# Flask Routes
+# --------------------------
+
 @app.route('/process_file', methods=['POST'])
 def process_file():
-    # check if the post request has the file part
     if 'file' not in request.files:
-        return jsonify({"message": "No file part"}), 400
+        return jsonify({"error": "No file part"}), 400
 
-    file = request.files['file']
+    uploaded_files = request.files.getlist('file')
 
-    # if user does not select file, browser may submit an empty part without filename
-    if file.filename == '':
-        return jsonify({"message": "No selected file"}), 400
+    if not uploaded_files or uploaded_files[0].filename == '':
+        return jsonify({"error": "No selected file"}), 400
 
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
+    all_data = []
 
-        with open(file_path, 'r') as f:
-            data = json.load(f)
+    # Open keys.txt to append keys and IDs
+    with open('keys.txt', 'a') as key_file:
+        for file in uploaded_files:
+            filename = secure_filename(file.filename)
+            file_path = os.path.join('uploads', filename)
+            file.save(file_path)
+            data = extract_data_from_pdf(file_path)
+            all_data.append(data)
+            
+            # Generate a key and encrypt the data with it
+            key = generate_key()
+            encrypted_data = encrypt_data(data, key)
+            
+            # Write the subject ID and key to keys.txt
+            subject_id = data['subject_id']  # Assuming 'SubjectID' is the field's name
+            key_file.write(f"{subject_id}: {key.decode()}\n")
+            
+            # Mine a block with the encrypted data
+            previous_block = blockchain.get_previous_block()
+            previous_proof = previous_block['proof']
+            proof = blockchain.proof_of_work(previous_proof)
+            previous_hash = blockchain.hash(previous_block)
+            block = blockchain.create_blockchain(proof, previous_hash, patient_data=encrypted_data)
 
-            # Assuming data is a list of patient dictionaries
-            for patient in data:
-                required_fields = ["subject_id", "gender", "drug", "care_type", "diagnoses"]
-
-                # If all required fields exist, mine a block with the patient data
-                if all(field in patient for field in required_fields):
-                    previous_block = blockchain.get_previous_block()
-                    previous_proof = previous_block['proof']
-                    proof = blockchain.proof_of_work(previous_proof)
-                    previous_hash = blockchain.hash(previous_block)
-                   
-                    key = generate_key()  # Generate a unique key for this patient
-                    encrypted_data = encrypt_data(patient, key)  # Encrypt the patient data
-
-                    # Save the key to a .txt file
-                    with open('keys.txt', 'a') as file:
-                        file.write(f"Patient {patient['subject_id']} Key: {key.decode()}\n")
-
-                    # Create a block with the encrypted data
-                    # Create a block with the encrypted data
-                    # Create a block with the encrypted data
-                    block = blockchain.create_blockchain(proof, previous_hash, patient_data=encrypted_data)
-
-
-        os.remove(file_path)  # delete the file after processing
-        
-        return jsonify({"message": "Processed and added data to blockchain"}), 200
-    else:
-        return jsonify({"message": "Invalid file type"}), 400
-
+    save_to_json(all_data, 'output.json')
+    return jsonify({"message": "Files processed, encrypted, blocks mined, and keys saved successfully"})
 
 @app.route('/')
 def index():
@@ -184,11 +252,6 @@ def mine_block():
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.hash(previous_block)
 
-   # block = blockchain.create_blockchain(proof, previous_hash, patient_data=patient)
-
-    
-    # Add patient details to the block
-   # block["patient_data"] = patient_data
 
     response = {
         'message': 'Block mined with patient details!',
@@ -202,31 +265,25 @@ def get_chain():
     response = {'chain': blockchain.chain,
                 'length': len(blockchain.chain)}
     return jsonify(response), 200
+
 @app.route('/get_patient_data', methods=['POST'])
 def get_patient_data():
-    key = request.form.get('key').encode()  # Get the decryption key from the user
-    subject_id = request.form.get('subject_id')  # Patient's unique identifier
-    
+    key = request.form['key'].encode()  # Get the decryption key from the form
+    subject_id = int(request.form['subject_id'])  # Convert SubjectID to integer
+
     # Iterate through the chain to find the patient's data
     for block in blockchain.chain:
-        try:
-            decrypted_data = decrypt_data(block['patient_data'], key)
-            if decrypted_data['subject_id'] == subject_id:
-                return jsonify(decrypted_data), 200
-        except:
-            # Decryption failed for this block, move to the next block
-            continue
+        # Check if the block has patient data
+        if 'patient_data' in block:
+            try:
+                decrypted_data = decrypt_data(block['patient_data'], key)
+                if decrypted_data['subject_id'] == subject_id:
+                    return jsonify(decrypted_data), 200
+            except:
+                # Decryption failed for this block, move to the next block
+                continue
 
     return jsonify({"message": "Data not found or incorrect key"}), 404
 
-
-
-app.run(host='0.0.0.0', port=5000)
-
-
-#Mine_block
-#get_chain
-
-
-#subject_id, gender, drug
-#care_type, diagnoses 
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
