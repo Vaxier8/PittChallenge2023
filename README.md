@@ -2,7 +2,7 @@
 ## Overview
 
 This repository contains our solution for the Pitt Challenge 2023, focusing on the topic of "Governance and Ethics in AI". Our aim is to ensure accountability and safety for private patient information in the healthcare domain.
-##Features
+## Features
 ### PDF Processing:
 
     Extract patient-related information from PDFs using regular expressions.
