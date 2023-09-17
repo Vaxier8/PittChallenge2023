@@ -3,6 +3,21 @@
         "subject_id": 10020,
         "PRESCRIPTION": [
             {
+                "drug_name": "metformin"
+            },
+            {
+                "drug_name": "amlodipine"
+            },
+            {
+                "drug_name": "Balarinan"
+            }
+        ],
+        "DIAGNOSES": []
+    },
+    {
+        "subject_id": 10020,
+        "PRESCRIPTION": [
+            {
                 "drug_name": "ibuprofen"
             },
             {
@@ -19,17 +34,5 @@
                 "icd9_code": null
             }
         ]
-    },
-    {
-        "subject_id": 10020,
-        "PRESCRIPTION": [
-            {
-                "drug_name": "metformin"
-            },
-            {
-                "drug_name": "amlodipine"
-            }
-        ],
-        "DIAGNOSES": []
     }
 ]

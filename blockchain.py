@@ -4,6 +4,7 @@ import re
 import fitz
 import datetime
 import hashlib
+import pandas as pd
 from flask import Flask, jsonify, request, render_template
 from cryptography.fernet import Fernet
 from werkzeug.utils import secure_filename
@@ -226,6 +227,11 @@ def process_file():
             previous_hash = blockchain.hash(previous_block)
             block = blockchain.create_blockchain(proof, previous_hash, patient_data=encrypted_data)
 
+            flagged_data = flag_suspicious_data(all_data)
+            if flagged_data:  # Check if there's any flagged data
+            # Handle flagged data. You might want to log them, store them, or send a response
+                print("Suspicious data found:", flagged_data)
+
     save_to_json(all_data, 'output.json')
     return jsonify({"message": "Files processed, encrypted, blocks mined, and keys saved successfully"})
 
@@ -285,5 +291,157 @@ def get_patient_data():
 
     return jsonify({"message": "Data not found or incorrect key"}), 404
 
+# --------------------------
+# Flagging Data
+# --------------------------
+
+known_drug_names = pd.read_csv(
+    "Datasets/ReferenceDataSets/20220906_product.csv").iloc[:, [3] + [5]]
+
+known_drug_names_set = set(known_drug_names.iloc[:, 0]).union(
+    set(known_drug_names.iloc[:, 1]))
+
+known_diseases_and_conditions = [
+    "Acute Flaccid Myelitis (AFM)",
+    "Adenovirus",
+    "Anthrax",
+    "Asthma",
+    "Avian Influenza",
+    "Botulism",
+    "Blue-Green Algae",
+    "Brucellosis",
+    "Campylobacteriosis",
+    "Chagas Disease (American trypanosomiasis)",
+    "Chickenpox",
+    "Chikungunya",
+    "Cholera",
+    "Congenital Rubella Syndrome",
+    "COVID-19 (Coronavirus Disease 2019)",
+    "Creutzfeldt-Jakob Disease",
+    "Cryptosporidiosis",
+    "Cyclosporiasis",
+    "Cytomegalovirus",
+    "Dengue Fever",
+    "Diphtheria",
+    "E. coli",
+    "Ebola Virus Disease",
+    "Ehrlichiosis",
+    "Enteroviruses",
+    "Fifth Disease",
+    "Giardiasis",
+    "Haemophilus Influenzae Invasive Disease",
+    "Hand, Foot, and Mouth Disease",
+    "Hantavirus",
+    "Head Lice",
+    "Heartland Virus",
+    "Hemolytic Uremic Syndrome",
+    "Hepatitis A",
+    "Influenza",
+    "Legionellosis",
+    "Leprosy (Hansen's Disease)",
+    "Leptospirosis",
+    "Listeriosis",
+    "Lyme Disease",
+    "Malaria",
+    "Marburg Virus Disease",
+    "Measles (Rubeola)",
+    "Meningitis",
+    "Meningococcal Disease",
+    "Molluscum Contagiosum",
+    "Mpox",
+    "Mononucleosis",
+    "Mumps",
+    "Norovirus",
+    "Pertussis",
+    "Plague",
+    "Polio (polio myelitis)",
+    "Primary Amebic Meningoencephalitis (PAM)",
+    "Psittacosis",
+    "Q Fever",
+    "Rabies",
+    "Reye Syndrome",
+    "Ringworm",
+    "Rocky Mountain Spotted Fever",
+    "Rotavirus",
+    "Rubella (German Measles)",
+    "Salmonellosis",
+    "Scabies",
+    "Shiga toxin-producing E. coli (STEC)",
+    "Shigellosis",
+    "Shingles",
+    "Smallpox",
+    "Southern Tick-Associated Rash Illness (STARI)",
+    "Streptococcus, group A, invasive disease",
+    "Streptococcus pneumoniae, invasive disease",
+    "Tetanus",
+    "Toxoplasmosis",
+    "Trichinellosis",
+    "Tuberculosis",
+    "Tularemia",
+    "Typhoid Fever",
+    "Vibrio species",
+    "West Nile Virus",
+    "Yellow Fever",
+    "Zika Virus"
+]
+
+
+def validate_drug_name(drug_name):
+    """Validate drug_name (should be in the known drug names database)"""
+    return drug_name in known_drug_names_set
+
+
+with open("output.json", "r") as file:
+    json_data = json.load(file)
+
+
+def validate_subject_id(subject_id):
+    """Validate subject_id (should be more than 1 digit)"""
+    return len(str(subject_id)) >= 1
+
+
+def validate_icd9_code(icd9_code):
+    """Validate icd9_code (should not be null)"""
+    return icd9_code is not None
+
+
+def flag_suspicious_data(data):
+    """Flag suspicious data points based on validation functions"""
+    flagged_data = []
+
+    for record in data:
+        flags = []
+
+        # Validate subject_id
+        if not validate_subject_id(record["subject_id"]):
+            flags.append("Invalid subject_id")
+
+        # Validate drug_names
+        for prescription in record["PRESCRIPTION"]:
+            if not validate_drug_name(prescription["drug_name"]):
+                flags.append(f"Invalid drug_name: {prescription['drug_name']}")
+
+        # Validate icd9_codes
+        for diagnosis in record["DIAGNOSES"]:
+            if not validate_icd9_code(diagnosis["icd9_code"]):
+                flags.append(
+                    f"Null icd9_code for diagnosis: {diagnosis['diagnosis']}")
+            if diagnosis['diagnosis'] not in known_diseases_and_conditions:
+                flags.append(
+                    f"Disease not in recognized: {diagnosis['diagnosis']}"
+                )
+
+        if flags:
+            flagged_record = record.copy()
+            flagged_record["flags"] = flags
+            flagged_data.append(flagged_record)
+
+    return flagged_data
+# Flagging suspicious data
+flagged_data = flag_suspicious_data(json_data)
+print(flagged_data)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
