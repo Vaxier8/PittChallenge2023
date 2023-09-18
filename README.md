@@ -1,4 +1,5 @@
 # PittChallenge2023 - Governance and Ethics in AI
+## Track Winning Project
 ## Overview
 
 This repository contains our solution for the Pitt Challenge 2023, focusing on the topic of "Governance and Ethics in AI". Our aim is to ensure accountability and safety for private patient information in the healthcare domain.
